@@ -1,7 +1,10 @@
 import { Sequelize } from 'sequelize';
+import { envConfig } from './env.config';
 
-// Database setup from .env
-const databaseUrl = process.env.DATABASE_URL || '';
-const sequelize = new Sequelize(databaseUrl);
+const databaseUrl = envConfig.DATABASE_URL || '';
+const sequelize = new Sequelize(databaseUrl, {
+    dialect: 'postgres',
+    logging: false,
+});
 
 export { sequelize };
